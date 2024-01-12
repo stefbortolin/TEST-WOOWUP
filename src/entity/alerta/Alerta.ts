@@ -20,10 +20,38 @@ export class Alerta implements Publisher{
         this.tipo = tipo;
         this.mensaje = mensaje;
     }
+
+
+    public haExpirado(): boolean{
+        return this.fechaHoraExpiracion < new Date();
+    }
+
+    suscribir(suscriber: Suscriber): void {
+        this.usuariosSuscriptos.push(suscriber as Usuario);
+    }
+    
+    desuscribir(suscriber: Suscriber): void {
+        this.usuariosSuscriptos.splice(this.usuariosSuscriptos.indexOf(suscriber as Usuario), 1);
+    }
+
+    notificarPorTema(): void {
+        this.usuariosSuscriptos.forEach(usuario => {
+            usuario.getTemasElegidos().includes(this.tema) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto al tema ${this.tema.getNombre()}`);
+        });
+    }
+
+    notificarPorUsuario(usuario: Usuario): void {
+        this.usuariosSuscriptos.includes(usuario) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto a la alerta ${this.identificador}`);
+    }
+
+
+
+    
+    //GETTER Y SETTERS
+
     public getIdentificador(): number{
         return this.identificador;
     }
-
     public getUsuariosSuscriptos(): Usuario[]{
         return this.usuariosSuscriptos;
     }
@@ -53,27 +81,5 @@ export class Alerta implements Publisher{
     }
     public setMensaje(mensaje: string): void{
         this.mensaje = mensaje;
-    }
-
-    public haExpirado(): boolean{
-        return this.fechaHoraExpiracion < new Date();
-    }
-
-    suscribir(suscriber: Suscriber): void {
-        this.usuariosSuscriptos.push(suscriber as Usuario);
-    }
-    
-    desuscribir(suscriber: Suscriber): void {
-        this.usuariosSuscriptos.splice(this.usuariosSuscriptos.indexOf(suscriber as Usuario), 1);
-    }
-
-    notificarPorTema(): void {
-        this.usuariosSuscriptos.forEach(usuario => {
-            usuario.getTemasElegidos().includes(this.tema) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto al tema ${this.tema.getNombre()}`);
-        });
-    }
-
-    notificarPorUsuario(usuario: Usuario): void {
-        this.usuariosSuscriptos.includes(usuario) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto a la alerta ${this.identificador}`);
     }
 }
