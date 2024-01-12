@@ -29,6 +29,16 @@ export class Usuario implements Suscriber{
         !this.temasElegidos.includes(tema) ? this.temasElegidos.push(tema) : console.log('Ya está suscripto a este tema');
     }
 
+    public ordenarAlertas(alerta: Alerta[]): Alerta[]{
+        const alertasUrgentes = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.urgente);
+        const alertasInformativas = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.informativa);
+
+        const alertasUrgentesOrdenadas = this.FIFO.ordenar(alertasUrgentes);
+        const alertasInformativasOrdenadas = this.LIFO.ordenar(alertasInformativas);
+
+        return alertasUrgentesOrdenadas.concat(alertasInformativasOrdenadas);
+    }
+
     public tomarAlertaNoLeida(): Alerta[] {
         let alertasNoLeidas = this.alertasNoLeidas.filter(alerta => !alerta.haExpirado());
         alertasNoLeidas = this.ordenarAlertas(alertasNoLeidas);
@@ -41,16 +51,6 @@ export class Usuario implements Suscriber{
         alertasNoLeidas = this.ordenarAlertas(alertasNoLeidas);
 
         return alertasNoLeidas;
-    }
-
-    public ordenarAlertas(alerta: Alerta[]): Alerta[]{
-        const alertasUrgentes = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.urgente);
-        const alertasInformativas = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.informativa);
-
-        const alertasUrgentesOrdenadas = this.FIFO.ordenar(alertasUrgentes);
-        const alertasInformativasOrdenadas = this.LIFO.ordenar(alertasInformativas);
-
-        return alertasUrgentesOrdenadas.concat(alertasInformativasOrdenadas);
     }
 
     marcarAlertaComoLeida(alerta: Alerta): void {
