@@ -1,3 +1,4 @@
+// Clase que representa a un tema al que se puede suscribir un usuario.
 export class Tema {
     private nombre: string;
     private descripcion: string;
