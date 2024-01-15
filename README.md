@@ -1,5 +1,5 @@
 # Sistema de alertas
-Este sistema contempla los requisitos propuestos en el enunciado, se plantea tener usuarios que pueden recibir alertas segun los temas a los que estan suscriptos, estas mismas tienen fecha de expiracion y tienen tres estados, leida, y caducada/expirada. Y hay de tipo Urgente e Informativa, que tendran distinto ordenamiento segun su tipo.
+Este sistema contempla los requisitos propuestos en el enunciado, se plantea tener usuarios que pueden recibir alertas segun los temas a los que estan suscriptos, estas mismas tienen fecha de expiracion y tienen dos estados claves, leida y no leida, ademas de poder estar caducada/expirada. Y hay de tipo Urgente e Informativa, que tendran distinto ordenamiento segun su tipo.
 Para resolver este ejercicio realice un modelo de clases basico que se puede denotar en las clases de entidad, y utilice una clase de fabricacion pura, de control (gestor), esto lo realice de esta manera ya que se necesitaba obtener todas las alertas no expiradas por un tema por ejemplo, si no tenemos persistencia ni una clase que se encargue del manejo de esta informacion como es el caso del gestor no podremos realizar esto, no realice ninguna clase boundary/de interfaz porque no se piden vistas ni codigo front-end. El codigo es probado mediante tests unitarios que realice con la libreria Jest.
 
 
