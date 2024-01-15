@@ -17,3 +17,10 @@ Utilicé polimorfismo para resolver el problema, mediante el uso de patrones de 
 ## Otros posibles patrones a aplicar
 
 Otros posibles patrones que se me ocurrieron fueron el State y Factory Method, pero no los utilice porque me parecio que faltaba informacion sobre esto o que no se proponia un cambio de comportamiento muy grande segun el estado, ni tenia una complejidad planteada al momento de crear las alartas por ejemplo, por lo tanto aplicar estos patrones solo iba a complejizar la logica de la solucion planteada. 
+
+## Aclaraciones
+### Idioma
+El test esta realizado en español, tanto los nombres de las variablaes como los nombres de las funciones, tests y demas. Lo realice así por el hecho de ser una prueba tecnica en la que se planteo el enunciado en español y los tipos en español, podría haberlo traducido pero lo senti mas comodo así, ademas de plantearlo desde un lado mas teorico al momento de realizar un boceto de diagrama de clases y demas lo trabaje como en la universidad, donde trabajamos en español y lo arrastre aqui. En mi ambito de trabajo, uso el ingles para nombrar las funciones, variables, etc. Se pide que los nombres sean representativos, en caso de hacerlo en ingles trabajaria con los mismos nombres pero en ingles, por ejemplo en vez de alerta.marcarComoLeido(), lo escribiría como alert.markAsRead(), y asi con todo.
+Creo que manejo un ingles en el cual puedo comprender a la otra persona ya sea escrito o oral, pero no tengo afinado el hecho de dar una respuesta oral en ingles, intento practicarlo a diario en mi vida al ingles y estoy interesado en tomar cursos para perfeccionarlo.
+### Tests
+Realice test unitarios para probar las distintas funcionalidades de las clases, intente hacer test que sigan el rumbo ideal de lo que deberia pasar y otros que no, al no realizar un manejo de errores o devolver una respuesta esperada, no realice muchos test que prueben el manejo de flujos alternativos que no sea el esperado. Desde mi punto de vista lo ideal seria realizar mas pruebas o test que validen los distintos flujos posibles del problemas.
