@@ -27,18 +27,17 @@ export class Usuario implements Suscriber{
 
     //Suscribe al usuario a un nuevo tema (contiene verificacion si el usuario ya se ha suscripto).
     public suscribirseATema(tema: Tema): void {
+        //Si el usuario no tiene al tema en su lista de temas elegidos, lo agrega.
         !this.temasElegidos.includes(tema) ? this.temasElegidos.push(tema) : console.log('Ya está suscripto a este tema');
     }
 
-    /**
-     * Ordena las alertas según el método de ordenamiento solicitado (Urgentes primero ordenadas por LIFO y por consiguiente Informativas ordenadas por  FIFO).
-     * @param alerta Lista de alertas a ordenar, puede contener urgentes, informativas o ambas.
-     * @returns Lista de alertas ordenadas.
-     */
+    // Ordena las alertas según el método de ordenamiento solicitado (Urgentes primero ordenadas por LIFO y por consiguiente Informativas ordenadas por  FIFO).
     public ordenarAlertas(alerta: Alerta[]): Alerta[] {
+        //Recorremos la lista de alertas que recibimos por parametro y las separamos en dos listas, una de alertas urgentes y otra de alertas informativas,
+        //se realiza mediante filter, que devuelve un array con los elementos que cumplan la condicion.
         const alertasUrgentes = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.urgente);
         const alertasInformativas = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.informativa);
-
+        //Utilizamos los objetos creados de las clases estrategias, que contienen el metodo para ordenar las alertas segun la estrategia elegida.
         const alertasUrgentesOrdenadas = this.LIFO.ordenar(alertasUrgentes);
         const alertasInformativasOrdenadas = this.FIFO.ordenar(alertasInformativas);
 
@@ -47,6 +46,7 @@ export class Usuario implements Suscriber{
 
     //Obtiene las alertas no leídas y que aun no han expirado, y las devuelve ordenadas.
     public tomarAlertaNoLeida(): Alerta[] {
+        //Filtramos dentro de las alertas no leídas, las que aun no han expirado. Pasamos la lista a la funcion para ordenar estas alertas.
         let alertasNoLeidas = this.alertasNoLeidas.filter(alerta => !alerta.haExpirado());
         alertasNoLeidas = this.ordenarAlertas(alertasNoLeidas);
 
@@ -55,6 +55,7 @@ export class Usuario implements Suscriber{
 
     //Obtiene las alertas no leídas de un tema específico y que aun no han expirado, y las devuelve ordenadas.
     public tomarAlertaPorTema(tema: Tema): Alerta[] {
+        //Filtramos dentro de las alertas no leídas, las que aun no han expirado y coinciden con tema que llega por parametros. Pasamos la lista a la funcion para ordenar estas alertas.
         let alertasNoLeidas = this.alertasNoLeidas.filter(alerta => !alerta.haExpirado() && alerta.getTema().getNombre() === tema.getNombre());
         alertasNoLeidas = this.ordenarAlertas(alertasNoLeidas);
 
@@ -64,6 +65,7 @@ export class Usuario implements Suscriber{
 
     //Marca una alerta existente como leída, moviendola a la lista de alertas leídas.
     public marcarAlertaComoLeida(alerta: Alerta): void {
+        //Buscamos la alerta dentro de la lista de alertas no leídas, si existe, la movemos a la lista de alertas leídas y la eliminamos de la lista de no leídas.
         const alertaAMarcar = this.alertasNoLeidas.find(alertaNoLeida => alertaNoLeida.getIdentificador() === alerta.getIdentificador());
         if (alertaAMarcar) {
             this.alertasLeidas.push(alerta);

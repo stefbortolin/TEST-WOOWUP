@@ -23,7 +23,7 @@ export class Alerta implements Publisher{
     }
 
 
-    //Verifica si la alerta ha expirado en base a una comparacion entre la fecha y hora de expiración y la fecha y hora actual.
+    //Verifica si la alerta ha expirado en base a una comparacion entre la fecha y hora de expiración y la fecha y hora actual, devuelve un boolean (true or false) segun si expiro o no.
     public haExpirado(): boolean {
         return this.fechaHoraExpiracion < new Date();
     }
@@ -43,6 +43,7 @@ export class Alerta implements Publisher{
     //Notifica a los usuarios suscritos a la alerta por tema.
     //Responde a metodo polimorfico de la interfaz Publisher.
     notificarPorTema(): void {
+        //Recorremos todos los usuarios, y verificamos por cada uno si contiene el tema en su lista de temas elegidos, si es asi se le notifica.
         this.usuariosSuscriptos.forEach(usuario => {
             usuario.getTemasElegidos().includes(this.tema) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto al tema ${this.tema.getNombre()}`);
         });
@@ -51,6 +52,7 @@ export class Alerta implements Publisher{
     //Notifica a un usuario específico sobre la alerta.
     //Responde a metodo polimorfico de la interfaz Publisher.
     notificarPorUsuario(usuario: Usuario): void {
+        //Si el usuario se encuentra en la lista de usuarios suscriptos a la alerta, se le notifica, sino en este caso mostre un mensaje por consola como ejemplo, deberia lanzar un error.
         this.usuariosSuscriptos.includes(usuario) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto a la alerta ${this.identificador}`);
     }
 
