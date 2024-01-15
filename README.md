@@ -1,6 +1,6 @@
 # Sistema de alertas
 Este sistema contempla los requisitos propuestos en el enunciado, se plantea tener usuarios que pueden recibir alertas segun los temas a los que estan suscriptos, estas mismas tienen fecha de expiracion y tienen tres estados, leida, y caducada/expirada. Y hay de tipo Urgente e Informativa, que tendran distinto ordenamiento segun su tipo.
-Para resolver este ejercicio realice un modelo de clases basico que se puede denotar en las clases de entidad, no utilice clases de fabricacion pura como puedn ser de control o boundary/interfaz debido a que no se planteo ningun caso de uso o ejemplo, el codigo es probado mediante test unitarios que realice con la libreria Jest.
+Para resolver este ejercicio realice un modelo de clases basico que se puede denotar en las clases de entidad, y utilice una clase de fabricacion pura, de control (gestor), esto lo realice de esta manera ya que se necesitaba obtener todas las alertas no expiradas por un tema por ejemplo, si no tenemos persistencia ni una clase que se encargue del manejo de esta informacion como es el caso del gestor no podremos realizar esto, no realice ninguna clase boundary/de interfaz porque no se piden vistas ni codigo front-end. El codigo es probado mediante tests unitarios que realice con la libreria Jest.
 
 
 ## Ejecucion
@@ -24,3 +24,5 @@ El test esta realizado en español, tanto los nombres de las variablaes como los
 Creo que manejo un ingles en el cual puedo comprender a la otra persona ya sea escrito o oral, pero no tengo afinado el hecho de dar una respuesta oral en ingles, intento practicarlo a diario en mi vida al ingles y estoy interesado en tomar cursos para perfeccionarlo.
 ### Tests
 Realice test unitarios para probar las distintas funcionalidades de las clases, intente hacer test que sigan el rumbo ideal de lo que deberia pasar y otros que no, al no realizar un manejo de errores o devolver una respuesta esperada, no realice muchos test que prueben el manejo de flujos alternativos que no sea el esperado. Desde mi punto de vista lo ideal seria realizar mas pruebas o test que validen los distintos flujos posibles del problemas.
+### Tiempo
+La prueba tecnica la realice en momentos libres que tuve en este fin de semana, por lo tanto es dificil decir cuanto me llevo, habia comentado con Nicolas de RRHH que tenia unos dias complicados, por lo que intente manejar mis horarios para realizarlo en breves momentos libres que fui teniendo, se nombra que no se cree que deberia tomar mas de 1 dia, pero no tuve un dia libre como para sentarme y realizarlo todo en un mismo dia.
