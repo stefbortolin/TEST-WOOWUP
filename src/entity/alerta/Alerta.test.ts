@@ -15,7 +15,7 @@ describe('Alerta', () => {
         // Configuración inicial antes de cada test
         usuariosSuscriptos = [new Usuario('username', 'password', 'Nombre', 'user@example.com', [])];
         tema = new Tema('Noticias', 'Apartado noticias generales');
-        fechaHoraExpiracion = new Date('2024-01-20');
+        fechaHoraExpiracion = new Date('2024-06-20');
         tipo = TipoAlerta.urgente;
         mensaje = 'Test alerta';
 
@@ -54,7 +54,7 @@ describe('Alerta', () => {
         const notificarMock = jest.fn();    //Los mocks son una especie de simulacion de una funcion, en este caso simulamos la funcion notificar de Usuario.
         usuarioNotificado.notificar = notificarMock; //Le asignamos el mock a la funcion notificar del usuario.
 
-        alerta.notificarPorTema();
+        alerta.notificar();
 
         expect(notificarMock).toHaveBeenCalledWith(alerta); //Verificamos si notificarMock fue llamado con alerta como argumento en algún momento durante la ejecución de la prueba.
     });
@@ -74,7 +74,7 @@ describe('Alerta', () => {
     //En este test, notificamos a un usuario que no se encuentra suscrito a la alerta, y verificamos que no se haya llamado a la funcion notificar de ese usuario.
     test('notificarPorUsuario maneja usuarios no suscritos correctamente', () => {
         const usuarioNoSuscrito = new Usuario('usernosuscripto', 'password', 'No Suscrito', 'nosuscrip@gmail.com', []);
-        const alerta = new Alerta(1, [], new Tema('General', 'Tema general'), new Date('2024-01-20'), TipoAlerta.informativa, 'Mensaje de prueba');
+        const alerta = new Alerta(1, [], new Tema('General', 'Tema general'), new Date('2024-06-20'), TipoAlerta.informativa, 'Mensaje de prueba');
         
         // Mock de la función notificar en Usuario
         const notificarMock = jest.fn();

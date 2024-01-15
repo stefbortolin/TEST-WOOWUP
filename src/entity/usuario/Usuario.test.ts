@@ -37,12 +37,12 @@ describe('usuario', () => {
     //se encuentren en el orden correcto, por lo tanto corroboramos que funcione ordenarAlertas y las estrategias creadas.
     test('tomarAlertaNoLeida devuelve alertas no leídas ordenadas', () => {
         //Este test se ve medio engorroso, pero al solo crear 6 alertas no las recorri porque eran pocas, en todo caso si fueran mas las podria guardar en un array y recorrerlas para notificarlas.
-        const alerta1 = new Alerta(1, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2024-01-20'), TipoAlerta.urgente, 'Test alerta');
-        const alerta2 = new Alerta(2, [usuario], new Tema('Tecnología', 'Apartado tecnología'), new Date('2024-01-20'), TipoAlerta.informativa, 'Test alerta');
-        const alerta3 = new Alerta(3, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2024-01-20'), TipoAlerta.urgente, 'Test alerta');
-        const alerta4 = new Alerta(4, [usuario], new Tema('Tecnología', 'Apartado tecnología'), new Date('2024-01-20'), TipoAlerta.informativa, 'Test alerta');
+        const alerta1 = new Alerta(1, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2024-06-20'), TipoAlerta.urgente, 'Test alerta');
+        const alerta2 = new Alerta(2, [usuario], new Tema('Tecnología', 'Apartado tecnología'), new Date('2024-06-20'), TipoAlerta.informativa, 'Test alerta');
+        const alerta3 = new Alerta(3, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2024-06-20'), TipoAlerta.urgente, 'Test alerta');
+        const alerta4 = new Alerta(4, [usuario], new Tema('Tecnología', 'Apartado tecnología'), new Date('2024-06-20'), TipoAlerta.informativa, 'Test alerta');
         const alerta5 = new Alerta(5, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2023-01-20'), TipoAlerta.urgente, 'Test alerta');
-        const alerta6 = new Alerta(6, [usuario], new Tema('Tecnología', 'Apartado tecnología'), new Date('2024-01-20'), TipoAlerta.informativa, 'Test alerta');
+        const alerta6 = new Alerta(6, [usuario], new Tema('Tecnología', 'Apartado tecnología'), new Date('2024-06-20'), TipoAlerta.informativa, 'Test alerta');
 
         usuario.notificar(alerta2);
         usuario.notificar(alerta1);
@@ -71,7 +71,7 @@ describe('usuario', () => {
     //Para testear que se marquen como leidas, creamos la alerta y la notificamos, esto deberia agregarla a la lista de no leidas, 
     //luego la marcamos como leida y verificamos que no se encuentre en la lista de no leidas y que se encuentre en la lista de leidas.
     test('marcarAlertaComoLeida marca correctamente una alerta como leída', () => {
-        const alerta = new Alerta(3, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2024-01-20'), TipoAlerta.urgente, 'Test alerta');
+        const alerta = new Alerta(3, [usuario], new Tema('Deportes', 'Apartado noticias generales'), new Date('2024-06-20'), TipoAlerta.urgente, 'Test alerta');
 
         usuario.notificar(alerta);
         usuario.marcarAlertaComoLeida(alerta);

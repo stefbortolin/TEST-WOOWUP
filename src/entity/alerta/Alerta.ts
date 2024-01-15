@@ -42,7 +42,7 @@ export class Alerta implements Publisher{
 
     //Notifica a los usuarios suscritos a la alerta por tema.
     //Responde a metodo polimorfico de la interfaz Publisher.
-    notificarPorTema(): void {
+    notificar(): void {
         //Recorremos todos los usuarios, y verificamos por cada uno si contiene el tema en su lista de temas elegidos, si es asi se le notifica.
         this.usuariosSuscriptos.forEach(usuario => {
             usuario.getTemasElegidos().includes(this.tema) ? usuario.notificar(this) : console.log(`El usuario ${usuario.getNombre()} no está suscripto al tema ${this.tema.getNombre()}`);

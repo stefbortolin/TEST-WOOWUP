@@ -35,11 +35,11 @@ export class Usuario implements Suscriber{
     public ordenarAlertas(alerta: Alerta[]): Alerta[] {
         //Recorremos la lista de alertas que recibimos por parametro y las separamos en dos listas, una de alertas urgentes y otra de alertas informativas,
         //se realiza mediante filter, que devuelve un array con los elementos que cumplan la condicion.
-        const alertasUrgentes = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.urgente);
-        const alertasInformativas = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.informativa);
+        const alertasUrgentes:Alerta[] = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.urgente);
+        const alertasInformativas:Alerta[] = alerta.filter(alerta => alerta.getTipo() === TipoAlerta.informativa);
         //Utilizamos los objetos creados de las clases estrategias, que contienen el metodo para ordenar las alertas segun la estrategia elegida.
-        const alertasUrgentesOrdenadas = this.LIFO.ordenar(alertasUrgentes);
-        const alertasInformativasOrdenadas = this.FIFO.ordenar(alertasInformativas);
+        const alertasUrgentesOrdenadas:Alerta[] = this.LIFO.ordenar(alertasUrgentes);
+        const alertasInformativasOrdenadas:Alerta[] = this.FIFO.ordenar(alertasInformativas);
 
         return alertasUrgentesOrdenadas.concat(alertasInformativasOrdenadas);
     }
@@ -52,16 +52,6 @@ export class Usuario implements Suscriber{
 
         return alertasNoLeidas;
     }
-
-    //Obtiene las alertas no leídas de un tema específico y que aun no han expirado, y las devuelve ordenadas.
-    public tomarAlertaPorTema(tema: Tema): Alerta[] {
-        //Filtramos dentro de las alertas no leídas, las que aun no han expirado y coinciden con tema que llega por parametros. Pasamos la lista a la funcion para ordenar estas alertas.
-        let alertasNoLeidas = this.alertasNoLeidas.filter(alerta => !alerta.haExpirado() && alerta.getTema().getNombre() === tema.getNombre());
-        alertasNoLeidas = this.ordenarAlertas(alertasNoLeidas);
-
-        return alertasNoLeidas;
-    }
-
 
     //Marca una alerta existente como leída, moviendola a la lista de alertas leídas.
     public marcarAlertaComoLeida(alerta: Alerta): void {
