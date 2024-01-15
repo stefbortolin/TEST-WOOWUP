@@ -16,7 +16,7 @@ Utilicé polimorfismo para resolver el problema, mediante el uso de patrones de 
 
 ## Otros posibles patrones a aplicar
 
-Otros posibles patrones que se me ocurrieron fueron el State y Factory Method, pero no los utilice porque me parecio que faltaba informacion sobre esto o que no se proponia un cambio de comportamiento muy grande segun el estado, ni tenia una complejidad planteada al momento de crear las alartas por ejemplo, por lo tanto aplicar estos patrones solo iba a complejizar la logica de la solucion planteada. 
+Otros posibles patrones que se me ocurrieron fueron el State y Factory Method, pero no los utilice porque me parecio que faltaba informacion sobre esto o que no se proponia un cambio de comportamiento muy grande segun el estado, ni tenia una complejidad planteada al momento de crear las alertas por ejemplo, por lo tanto aplicar estos patrones solo iba a complejizar la logica de la solucion planteada. 
 
 ## Aclaraciones
 ### Idioma
